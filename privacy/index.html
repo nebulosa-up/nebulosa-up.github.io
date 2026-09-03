@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Políticas de Privacidade | Nebulosa Up</title>
+    <link rel="icon" href="../assets/images/branding/nebulosa-up-removebg-preview.png" type="image/png">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;900&display=swap');
+        body { font-family: 'Inter', sans-serif; }
+        .gradient-bg {
+            background: linear-gradient(135deg, #0f172a 0%, #1e1b4b 50%, #312e81 100%);
+        }
+        .glass {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+    </style>
+</head>
+<body class="bg-slate-950 text-white selection:bg-purple-500/30 min-h-screen flex flex-col">
+
+    <nav class="w-full z-50 glass border-b border-white/5">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-20">
+                <a href="../index.html" class="flex items-center gap-3">
+                    <img src="../assets/images/branding/nebulosa-up-removebg-preview.png" alt="Nebulosa Logo" class="h-8 w-auto object-contain">
+                    <span class="text-xl font-bold tracking-tighter bg-clip-text text-transparent bg-gradient-to-r from-purple-400 to-pink-500">
+                        NEBULOSA UP
+                    </span>
+                </a>
+                <a href="../index.html" class="text-sm font-medium text-slate-400 hover:text-white transition-colors">
+                    <i class="fas fa-arrow-left mr-2"></i> Voltar ao site
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <main class="flex-grow py-20 px-4">
+        <div class="max-w-4xl mx-auto">
+            <h1 class="text-4xl font-black mb-4 tracking-tight">Centro de Privacidade</h1>
+            <p class="text-slate-400 mb-12">Selecione o aplicativo para visualizar sua respectiva política de privacidade e termos de uso.</p>
+
+            <div class="grid gap-6">
+                <!-- App Item: Super Lotofácil -->
+                <a href="super-lotofacil.html" class="glass p-6 rounded-2xl hover:border-purple-500/50 transition-all flex items-center justify-between group">
+                    <div class="flex items-center gap-4">
+                        <div class="w-12 h-12 bg-slate-900 rounded-xl p-2 ring-1 ring-white/10">
+                            <img src="../assets/images/apps/super-lotofacil/icon.png" alt="Super Lotofácil" class="w-full h-full object-cover rounded-md">
+                        </div>
+                        <div>
+                            <h3 class="font-bold text-lg group-hover:text-purple-400 transition-colors">Super Lotofácil</h3>
+                            <p class="text-sm text-slate-500">Política de Privacidade e Termos</p>
+                        </div>
+                    </div>
+                    <i class="fas fa-chevron-right text-slate-600 group-hover:text-purple-400 transition-all transform group-hover:translate-x-1"></i>
+                </a>
+
+                <!-- Placeholder para futuros apps -->
+                <div class="glass p-6 rounded-2xl opacity-40 border-dashed border-2 border-white/5 flex items-center gap-4">
+                    <div class="w-12 h-12 bg-slate-900/50 rounded-xl flex items-center justify-center">
+                        <i class="fas fa-plus text-slate-700"></i>
+                    </div>
+                    <div>
+                        <h3 class="font-bold text-lg text-slate-600">Em breve...</h3>
+                        <p class="text-sm text-slate-700">Novas soluções em desenvolvimento</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer class="py-10 border-t border-white/10 bg-slate-950/50 text-center">
+        <div class="text-slate-600 text-sm">
+            &copy; 2026 Nebulosa Up - Soluções Inteligentes.
+        </div>
+    </footer>
+
+</body>
+</html>
