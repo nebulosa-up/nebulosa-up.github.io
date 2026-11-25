@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noindex, nofollow">
+  <title>Convite para bolão da Mega-Sena | Super Mega-Sena</title>
+  <meta property="og:title" content="Convite para bolão da Mega-Sena">
+  <meta property="og:description" content="Toque para ver os jogos e salvar o bolão no app Super Mega-Sena.">
+  <meta property="og:image" content="https://nebulosa-up.github.io/assets/images/apps/super-mega-sena/icon.png">
+  <meta property="og:type" content="website">
+  <meta name="theme-color" content="#209869">
+  <link rel="icon" href="../assets/images/apps/super-mega-sena/icon.png" type="image/png">
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Inter, sans-serif; background: #F4F6F9; color: #2D3436; min-height: 100vh; }
+    .topo { background: #209869; color: #FFF; text-align: center; padding: 36px 20px 70px; border-radius: 0 0 35px 35px; }
+    .topo img { width: 64px; height: 64px; border-radius: 18px; box-shadow: 0 6px 18px rgba(0,0,0,.18); }
+    .topo .rotulo { font-size: 12px; font-weight: 800; letter-spacing: 1.5px; text-transform: uppercase; opacity: .75; margin-top: 14px; }
+    .topo h1 { font-size: 26px; font-weight: 900; margin-top: 6px; word-wrap: break-word; }
+    main { max-width: 480px; margin: -46px auto 40px; padding: 0 16px; }
+    .card { background: #FFF; border-radius: 24px; padding: 20px; box-shadow: 0 6px 20px rgba(0,0,0,.06); border: 1px solid #F1F2F6; margin-bottom: 16px; }
+    .infos { display: flex; background: #F8F9FA; border-radius: 18px; padding: 14px 0; }
+    .info { flex: 1; text-align: center; }
+    .info + .info { border-left: 1px solid #E8E8E8; }
+    .info b { display: block; font-size: 18px; font-weight: 900; }
+    .info span { font-size: 11px; font-weight: 700; color: #95A5A6; text-transform: uppercase; }
+    .info .verde { color: #209869; }
+    .total { text-align: center; font-size: 13px; color: #95A5A6; font-weight: 700; margin-top: 10px; }
+    h2 { font-size: 13px; font-weight: 900; letter-spacing: 1.2px; text-transform: uppercase; margin: 4px 4px 12px; }
+    .jogo { border: 1px solid #F1F2F6; border-radius: 16px; padding: 12px; margin-bottom: 10px; }
+    .jogo small { font-size: 11px; font-weight: 900; color: #209869; letter-spacing: 1px; }
+    .bolas { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 8px; }
+    .bola { width: 38px; height: 38px; border-radius: 50%; border: 2px solid #E0E0E0; display: flex; align-items: center; justify-content: center; font-weight: 800; font-size: 15px; background: #FFF; }
+    .botao { display: flex; align-items: center; justify-content: center; gap: 8px; width: 100%; padding: 17px; border-radius: 16px; font-size: 15px; font-weight: 900; letter-spacing: .5px; text-decoration: none; border: 0; cursor: pointer; }
+    .principal { background: #209869; color: #FFF; box-shadow: 0 8px 20px rgba(32,152,105,.3); }
+    .secundario { background: #FFF; color: #209869; border: 1.5px solid #20986955; margin-top: 12px; }
+    .dica { background: #20986912; color: #166B4A; border-radius: 14px; padding: 12px 14px; font-size: 13px; line-height: 1.5; font-weight: 600; margin-top: 14px; }
+    .erro { text-align: center; padding: 30px 10px; }
+    .erro b { display: block; font-size: 18px; margin-bottom: 8px; }
+    .erro p { color: #636E72; line-height: 1.5; }
+    footer { text-align: center; font-size: 11px; color: #A4B0BE; padding: 0 20px 30px; line-height: 1.5; }
+    [hidden] { display: none !important; }
+  </style>
+</head>
+<body>
+  <header class="topo">
+    <img src="../assets/images/apps/super-mega-sena/icon.png" alt="Super Mega-Sena">
+    <div class="rotulo">Convite para bolão</div>
+    <h1 id="nome">Bolão da Mega-Sena</h1>
+  </header>
+
+  <main>
+    <section class="card" id="resumo" hidden>
+      <div class="infos">
+        <div class="info"><b id="concurso">-</b><span>Concurso</span></div>
+        <div class="info"><b id="cotas">-</b><span>Cotas</span></div>
+        <div class="info"><b id="cota" class="verde">-</b><span>Por cota</span></div>
+      </div>
+      <div class="total" id="total"></div>
+    </section>
+
+    <section class="card" id="acoes" hidden>
+      <a class="botao principal" id="abrir" href="#">📲 Salvar bolão no app</a>
+      <a class="botao secundario" id="baixar" href="#">Baixar o Super Mega-Sena</a>
+      <div class="dica" id="dica">
+        Ainda não tem o app? Baixe na Google Play e depois toque de novo no link que você recebeu para salvar o bolão.
+      </div>
+    </section>
+
+    <section class="card" id="jogos-card" hidden>
+      <h2 id="titulo-jogos">Jogos</h2>
+      <div id="jogos"></div>
+    </section>
+
+    <section class="card erro" id="erro" hidden>
+      <b>Link de bolão inválido</b>
+      <p>Peça para quem organizou o bolão compartilhar o link de novo pelo app Super Mega-Sena.</p>
+      <a class="botao secundario" id="baixar-erro" href="#" style="margin-top:18px">Conhecer o Super Mega-Sena</a>
+    </section>
+  </main>
+
+  <footer>
+    Super Mega-Sena é um app independente, sem vínculo com a Caixa Econômica Federal.<br>
+    As apostas devem ser registradas em uma lotérica ou nos canais oficiais da Caixa.
+  </footer>
+
+  <script>
+    (function () {
+      var PACOTE = 'com.nebulosaup.supermegasena.app';
+      var PLAY = 'https://play.google.com/store/apps/details?id=' + PACOTE;
+      var PRECO = 6; // aposta simples (6 dezenas), mesmo valor usado no app
+
+      // Mesmas regras do app (BolaoService.lerLinkBolao).
+      function ler(query) {
+        var p = {};
+        query.split('&').forEach(function (par) {
+          var i = par.indexOf('=');
+          if (i <= 0) return;
+          try { p[par.slice(0, i)] = decodeURIComponent(par.slice(i + 1).replace(/\+/g, ' ')); } catch (e) {}
+        });
+        if (p.v !== '1' || (p.l && p.l !== 'ms')) return null;
+        if (!/^[a-z0-9]{6,32}$/i.test(p.i || '')) return null;
+        if (!/^(\d{2})+(\.(\d{2})+)*$/.test(p.j || '')) return null;
+        var jogos = p.j.split('.').map(function (b) {
+          var d = [];
+          for (var k = 0; k < b.length; k += 2) d.push(Number(b.slice(k, k + 2)));
+          return d.sort(function (a, b) { return a - b; });
+        });
+        var nome = (p.n || '').replace(/[\u0000-\u001f]/g, '').trim().slice(0, 40);
+        var cotas = /^\d{1,3}$/.test(p.q || '') ? Number(p.q) : 0;
+        var concurso = /^\d{1,6}$/.test(p.c || '') ? Number(p.c) : 0;
+        var valido = nome && cotas >= 2 && cotas <= 100 && jogos.length >= 1 && jogos.length <= 20 &&
+          jogos.every(function (j) {
+            return j.length >= 6 && j.length <= 20 && new Set(j).size === j.length &&
+              j.every(function (n) { return n >= 1 && n <= 60; });
+          });
+        return valido ? { nome: nome, cotas: cotas, concurso: concurso, jogos: jogos } : null;
+      }
+
+      function comb(n, k) {
+        var r = 1;
+        for (var i = 1; i <= k; i++) r = r * (n - k + i) / i;
+        return Math.round(r);
+      }
+      function moeda(v) {
+        return 'R$ ' + v.toFixed(2).replace('.', ',').replace(/\B(?=(\d{3})+(?!\d))/g, '.');
+      }
+      function el(id) { return document.getElementById(id); }
+
+      var query = location.search.replace(/^\?/, '');
+      var bolao = ler(query);
+      var android = /Android/i.test(navigator.userAgent);
+      var playComReferencia = PLAY + '&referrer=' + encodeURIComponent('bolao=' + query);
+
+      el('baixar').href = playComReferencia;
+      el('baixar-erro').href = PLAY;
+
+      if (!bolao) {
+        el('erro').hidden = false;
+        return;
+      }
+
+      document.title = 'Bolão ' + bolao.nome + ' | Super Mega-Sena';
+      el('nome').textContent = bolao.nome; // textContent: o nome vem do link, nunca vira HTML
+
+      var apostas = bolao.jogos.reduce(function (s, j) { return s + comb(j.length, 6); }, 0);
+      var total = Math.round(apostas * PRECO * 100) / 100;
+      var cota = Math.ceil(total / bolao.cotas * 100) / 100;
+      el('concurso').textContent = bolao.concurso > 0 ? bolao.concurso : 'Qualquer';
+      el('cotas').textContent = bolao.cotas;
+      el('cota').textContent = moeda(cota);
+      el('total').textContent = 'Total do bolão: ' + moeda(total);
+      el('titulo-jogos').textContent = bolao.jogos.length + (bolao.jogos.length === 1 ? ' jogo' : ' jogos');
+
+      var lista = el('jogos');
+      bolao.jogos.forEach(function (jogo, i) {
+        var caixa = document.createElement('div');
+        caixa.className = 'jogo';
+        var titulo = document.createElement('small');
+        titulo.textContent = 'JOGO #' + (i + 1);
+        var bolas = document.createElement('div');
+        bolas.className = 'bolas';
+        jogo.forEach(function (n) {
+          var b = document.createElement('div');
+          b.className = 'bola';
+          b.textContent = (n < 10 ? '0' : '') + n;
+          bolas.appendChild(b);
+        });
+        caixa.appendChild(titulo);
+        caixa.appendChild(bolas);
+        lista.appendChild(caixa);
+      });
+
+      // Android: o intent abre o app se estiver instalado; se não, o Chrome vai para a Play Store.
+      el('abrir').href = android
+        ? 'intent://bolao?' + query + '#Intent;scheme=supermegasena;package=' + PACOTE +
+          ';S.browser_fallback_url=' + encodeURIComponent(playComReferencia) + ';end'
+        : 'supermegasena://bolao?' + query;
+
+      if (!android) {
+        el('dica').textContent = 'O Super Mega-Sena está disponível para Android. Abra este link no celular Android para salvar o bolão no app.';
+      }
+
+      el('resumo').hidden = false;
+      el('acoes').hidden = false;
+      el('jogos-card').hidden = false;
+    })();
+  </script>
+</body>
+</html>
